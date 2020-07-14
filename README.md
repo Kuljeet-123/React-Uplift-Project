@@ -18,8 +18,8 @@
 ```
 * Create new file or folder with the name of Component
  
-* Push changes to the master branch
+* Push changes to the your branch
 ``` 
    git push origin  feat/<name>-<feature>/<component name>
 ```
-* Create a Pull Request
+* Create a Pull Request against develop
