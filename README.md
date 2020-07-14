@@ -2,7 +2,6 @@
 
 
 ## Contributing Guidelines:-
-* Fork This Repo 
 
 * Clone the Repo
 ```
