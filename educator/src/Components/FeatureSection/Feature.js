@@ -1,26 +1,42 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
+import sizes from './sizes'
 
-const useStyles = makeStyles({
+const styles = {
   features: {
     display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: "10px",
-    margin: "10px",
-    flexDirection: props => props.features.reverse ? 'row-reverse' : 'row',
+    flexDirection: "column",
     borderRadius: '1rem',
-    boxShadow: '2px 2px 10px lightgrey'
+    boxShadow: '2px 2px 10px lightgrey',
+    maxWidth: "800px",
+    margin: "10px auto",
+    width: "100%",
+    [sizes.up("xs")]: {
+      flexDirection: props => props.features.reverse ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    }
   },
   image: {
-    width: "40%",
+    maxWidth: "20rem",
+    [sizes.up("xs")]: {
+      width: '50%'
+    }
   },
   img: {
     width: '100%',
     borderRadius: '10px'
   },
   text: {
-    width: "50%",
+    textAlign: 'center',
+    [sizes.up("xs")]: {
+    textAlign: 'start',
+      width: '48%',
+      padding: '20px'
+    }
   },
   head: {
     fontSize: "2rem",
@@ -29,11 +45,11 @@ const useStyles = makeStyles({
   desc: {
     fontSize: "1.2rem"
   }
-})
+}
 
-export default function Feature (props) {
-  const { img, heading, description, alt, reverse } = props.features;
-  const classes = useStyles(props);
+function Feature ({features, classes}) {
+  const { img, heading, description, alt } = features;
+
   return (
     <div className={classes.features}>
       <div className={classes.image}>
@@ -46,3 +62,4 @@ export default function Feature (props) {
     </div>
   )
 }
+export default withStyles(styles)(Feature)
