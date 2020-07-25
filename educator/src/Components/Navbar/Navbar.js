@@ -150,8 +150,6 @@ function Navbar() {
     }
   }, [value]);
 
- 
-
   const loggedInMenu = (
     <Fragment>
       <Tabs>
@@ -237,13 +235,14 @@ function Navbar() {
     <Fragment>
       <SwipeableDrawer
         disableBackdropTransition={!iOS}
+        anchor={'top'}
         disableDiscovery={iOS}
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
         classes={{paper: classes.drawer}}
       >
-        <List disablePadding>
+        <List disablePadding className>
           <ListItem
             divider
             button
@@ -276,52 +275,61 @@ function Navbar() {
             <ListItemText>Discussion</ListItemText>
           </ListItem>
         </List>
-        {isLoggedIn ? <> <List>
-          <ListItem
-            divider
-            button
-            onClick={() => setOpenDrawer(false)}
-            component={Link}
-            to='/profile'
-          >
-            <ListItemText>Profile</ListItemText>
-          </ListItem>
-        </List>
-        <List>
-          <ListItem
-            divider
-            button
-            onClick={() => setOpenDrawer(false)}
-            component={Link}
-            to='/logout'
-          >
-            <ListItemText>Logout</ListItemText>
-          </ListItem>
-        </List> </>: <> <List>
-          <ListItem
-            divider
-            button
-            onClick={() => setOpenDrawer(false)}
-            component={Link}
-            to='/login'
-          >
-            <ListItemText>Login</ListItemText>
-          </ListItem>
-        </List>
-        <List>
-          <ListItem
-            divider
-            button
-            onClick={() => setOpenDrawer(false)}
-            component={Link}
-            to='/signup'
-          >
-            <ListItemText>Sign Up</ListItemText>
-          </ListItem>
-        </List> </>}
-        
+        {isLoggedIn ? (
+          <>
+            {' '}
+            <List>
+              <ListItem
+                divider
+                button
+                onClick={() => setOpenDrawer(false)}
+                component={Link}
+                to='/profile'
+              >
+                <ListItemText>Profile</ListItemText>
+              </ListItem>
+            </List>
+            <List>
+              <ListItem
+                divider
+                button
+                onClick={() => setOpenDrawer(false)}
+                component={Link}
+                to='/logout'
+              >
+                <ListItemText>Logout</ListItemText>
+              </ListItem>
+            </List>{' '}
+          </>
+        ) : (
+          <>
+            {' '}
+            <List>
+              <ListItem
+                divider
+                button
+                onClick={() => setOpenDrawer(false)}
+                component={Link}
+                to='/login'
+              >
+                <ListItemText>Login</ListItemText>
+              </ListItem>
+            </List>
+            <List>
+              <ListItem
+                divider
+                button
+                onClick={() => setOpenDrawer(false)}
+                component={Link}
+                to='/signup'
+              >
+                <ListItemText>Sign Up</ListItemText>
+              </ListItem>
+            </List>{' '}
+          </>
+        )}
       </SwipeableDrawer>
-    
+
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}
         className={classes.drawerIconContainer}
